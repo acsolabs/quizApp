@@ -34,3 +34,25 @@ const questions = [
     "Math.round()",
   ),
 ];
+
+class Quizz {
+  constructor(questions) {
+    this.score = 0;
+    this.questions = questions;
+    this.currentQuestionIndex = 0;
+  }
+
+  getCurrentQuestion() {
+    return this.questions[this.currentQuestionIndex];
+  }
+
+  guess(answer) {
+    if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
+      this.score++;
+    }
+    this.currentQuestionIndex++;
+  }
+  hasEnded() {
+    return this.currentQuestionIndex >= questions.length;
+  }
+}
